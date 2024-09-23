@@ -63,9 +63,9 @@ static void flush_cb(lv_display_t *display, const lv_area_t *area, uint8_t *px_m
 #elif LV_COLOR_DEPTH == 16
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB565, display->hor_res, display->ver_res, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, dsc->fb1);
 #elif LV_COLOR_DEPTH == 24
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, display->hor_res, display->ver_res, 0, GL_BGR, GL_UNSIGNED_BYTE, dsc->fb1);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, display->hor_res, display->ver_res, 0, GL_RGB, GL_UNSIGNED_BYTE, dsc->fb1);
 #elif LV_COLOR_DEPTH == 32
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, display->hor_res, display->ver_res, 0, GL_BGRA, GL_UNSIGNED_BYTE, dsc->fb1);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, display->hor_res, display->ver_res, 0, GL_RGBA, GL_UNSIGNED_BYTE, dsc->fb1);
 #else
 #error("Unsupported color format")
 #endif
@@ -246,7 +246,7 @@ lv_display_t *lv_raylib_display_create(unsigned int x, unsigned int y, unsigned 
     texture->rlTexture.width = width;
     texture->rlTexture.height = height;
     texture->rlTexture.mipmaps = 1;
-    texture->rlTexture.format = PIXELFORMAT_UNCOMPRESSED_R8G8B8; // 24 bpp
+    texture->rlTexture.format = PIXELFORMAT_UNCOMPRESSED_R8G8B8A8; // 32 bpp
     texture->rlPosition = (Vector2){ x, y };
 
     return display;
